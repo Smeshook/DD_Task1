@@ -5,12 +5,11 @@ namespace searchingLibrary
     public class cleverSearchClass
     {
 
-        private Dictionary<string, int> analyser(string pathToBook)
+        private Dictionary<string, int> analyser(string fileText)
         {
             var specialWords = new Dictionary<string, int>();
-            string[] textWords;
 
-            char[] charsToTrim = {' ', '.', ',', '-', '\n', '\"', '(', ')', ':', ';', '[', ']', '\t', '!', '?',
+            char[] charsToTrim = {' ', '.', ',', '-', '\r','\n', '\"', '(', ')', ':', ';', '[', ']', '\t', '!', '?',
                                                              '0','1','2','3','4','5','6','7','8','9'};
             string[] notUnique = {"я", "мы","он","она","они","оно","ты","вы","нее","у","в","него","ее","его","мне","чтобы","себя", "тебя",
                                       "не", "с","к","все","за","это","от","по","так","то","из","бы","ему","ей","была","будто","быть", "тут", "уж",
@@ -19,34 +18,20 @@ namespace searchingLibrary
                                       "того","вас","тем","себе","ли","вам","чем","которые","во","свою","перед", "сам", "мой", "меня", "чтоб", "если",
                                       "их","только","уже","очень","всех","при","со","чтото","своего","им","без", "ней", "там", "го", "т","г","м", "ж"};
 
-            StreamReader bookLines = new StreamReader(pathToBook);
-
-            while (true)
+            string[] textWords = fileText.ToLower().Split(' ');
+            foreach (string word in textWords)
             {
-                string allLines = bookLines.ReadLine();
-                if (allLines == null)
-                    break;
+                string cleanWord = "";
+
+                foreach (char letter in word)
+                    cleanWord += letter.ToString().Trim(charsToTrim);
+                    
+                if (specialWords.ContainsKey(cleanWord))
+                    specialWords[cleanWord]++;
                 else
-                    allLines = allLines.ToLower();
-
-                textWords = allLines.Split(' ');
-
-                foreach (string word in textWords)
-                {
-                    string cleanWord = "";
-
-                    foreach (char letter in word)
-                        cleanWord += letter.ToString().Trim(charsToTrim);
+                    specialWords[cleanWord] = 1;
                     
-                    if (specialWords.ContainsKey(cleanWord))
-                        specialWords[cleanWord]++;
-                    else
-                        specialWords[cleanWord] = 1;
-                    
-                }
-
             }
-            bookLines.Close();
 
             specialWords.Remove("");
 

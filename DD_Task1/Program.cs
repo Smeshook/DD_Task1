@@ -17,11 +17,14 @@ public static class Task_1
         {
             cleverSearchClass search = new cleverSearchClass();
 
+            StreamReader fileText = new StreamReader(pathToBook);
+
             var type = typeof(cleverSearchClass);
             MethodInfo methodInfo = type.GetMethod("analyser", BindingFlags.Instance | BindingFlags.NonPublic);
-            object reflectionReturn = methodInfo.Invoke(search, new object[] {pathToBook});
+
+            object reflectionReturn = methodInfo.Invoke(search, new object[] {fileText.ReadToEnd()});
             Dictionary<string, int> totalDictionary = (Dictionary<string, int>)reflectionReturn;
-   
+
             StreamWriter uniqeWords = new StreamWriter(pathToUniqueWords);
             foreach (var word in totalDictionary.OrderByDescending(x => x.Value))
                 uniqeWords.WriteLine($"{word.Key}\t {word.Value}");
