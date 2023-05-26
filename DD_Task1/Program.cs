@@ -11,7 +11,7 @@ public static class Task_1
     {
         Console.WriteLine("Enter path to book");
         string pathToBook = Console.ReadLine();
-        string pathToUniqueWords = "C:\\Users\\smesh\\Desktop\\proga\\c#\\DD_Task1\\DD_Task1\\uniqueWords.txt";
+        string pathToUniqueWords = @".\uniqueWords.txt";
 
         try
         {
