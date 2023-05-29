@@ -14,7 +14,7 @@ namespace searchingLibrary
         private Dictionary<string, int> analyser(string fileText)
         {
             var specialWords = new Dictionary<string, int>();
-            tempStr = new string((from c in fileText
+            string tempStr = new string((from c in fileText
                                      where (char.IsLetter(c) || char.IsWhiteSpace(c)) && c!='\r' && c!='\n'
                                      select c).ToArray());
                         
