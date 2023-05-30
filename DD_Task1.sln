@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DD_Task1", "DD_Task1\DD_Task1.csproj", "{172AE609-284B-4E21-B0A6-2CE2345EFDA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "searchingLibrary", "searchingLibrary\searchingLibrary.csproj", "{41A7A4FD-AB36-48F2-A537-89CFBE67A09E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "searchingLibrary", "searchingLibrary\searchingLibrary.csproj", "{41A7A4FD-AB36-48F2-A537-89CFBE67A09E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
