@@ -53,16 +53,17 @@ public static class Task_1
             TimeSpan tsPublic = watchPublic.Elapsed;
             TimeSpan tsPrivate = watchPrivate.Elapsed;
 
-            string elapsedTimePublic = String.Format("{0:00}:{1:00}:{2:000}",
+            string elapsedTimePublic = String.Format("{0:00 sec}, {1:00 msec}, {2:000 mcsec}",
                                                     tsPublic.Seconds,
                                                     tsPublic.Milliseconds, tsPublic.Microseconds);
-            string elapsedTimePrivate = String.Format("{0:00}:{1:00}:{2:000}",
+            string elapsedTimePrivate = String.Format("{0:00 sec }, {1:00 msec }, {2:000 mcsec}",
                                                     tsPrivate.Seconds,
                                                     tsPrivate.Milliseconds, tsPrivate.Microseconds);
 
-            Console.WriteLine("RunTime Public: " + elapsedTimePublic
-                                +"\n"+ "RunTime Private: " + elapsedTimePrivate);
-
+            StreamWriter timeComparison = new StreamWriter(@".\timeComparison.txt");
+            timeComparison.WriteLine("RunTime Public: " + elapsedTimePublic
+                                + "\n" + "RunTime Private: " + elapsedTimePrivate);
+            timeComparison.Close();
         }
 
         catch { Console.WriteLine("Возникло исключение!"); }
